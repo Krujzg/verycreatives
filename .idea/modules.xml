@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/verycreatives.iml" filepath="$PROJECT_DIR$/.idea/modules/verycreatives.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/application/verycreatives.application.iml" filepath="$PROJECT_DIR$/.idea/modules/application/verycreatives.application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/verycreatives.domain.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/verycreatives.domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/infrastructure/verycreatives.infrastructure.iml" filepath="$PROJECT_DIR$/.idea/modules/infrastructure/verycreatives.infrastructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/verycreatives.presentation.iml" filepath="$PROJECT_DIR$/.idea/modules/app/verycreatives.presentation.iml" />
+    </modules>
+  </component>
+</project>
