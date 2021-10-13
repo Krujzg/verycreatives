@@ -3,7 +3,9 @@ package com.krujz.verycreatives.dependencyinjection.activity.modules
 import androidx.fragment.app.FragmentManager
 import com.krujz.application.entities.MovieEntity
 import com.krujz.application.mappers.ICollectionItemsMapper
+import com.krujz.application.mappers.IGridDataWrapperMapper
 import com.krujz.application.repository_interfaces.IMovieRepository
+import com.krujz.domain.models.GridMovieDataWrapper
 import com.krujz.domain.models.MovieModel
 import com.krujz.verycreatives.screens.common.contracts.HomeContract
 import com.krujz.verycreatives.screens.common.contracts.MovieDetailsContract
@@ -21,8 +23,10 @@ object FragmentModule {
     fun dialogNavigator(fragmentManager: FragmentManager) : IDialogNavigator = DialogNavigator(fragmentManager)
 
     @Provides
-    fun homeFragmentPresenter(repository: IMovieRepository, mapper: ICollectionItemsMapper<MovieEntity, MovieModel>): HomeContract.Presenter{
-        return HomeFragmentPresenter(repository, mapper)
+    fun homeFragmentPresenter(repository: IMovieRepository,
+                              entityToDomainMapper: ICollectionItemsMapper<MovieEntity, MovieModel>,
+                              domainToGridWrapperMapper: IGridDataWrapperMapper<MovieModel, GridMovieDataWrapper>): HomeContract.Presenter{
+        return HomeFragmentPresenter(repository, entityToDomainMapper, domainToGridWrapperMapper)
     }
 
     @Provides

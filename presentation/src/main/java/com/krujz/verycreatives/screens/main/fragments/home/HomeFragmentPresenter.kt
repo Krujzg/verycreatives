@@ -2,15 +2,18 @@ package com.krujz.verycreatives.screens.main.fragments.home
 
 import com.krujz.application.entities.MovieEntity
 import com.krujz.application.mappers.ICollectionItemsMapper
+import com.krujz.application.mappers.IGridDataWrapperMapper
 import com.krujz.application.repository_interfaces.IMovieRepository
+import com.krujz.domain.models.GridMovieDataWrapper
 import com.krujz.domain.models.MovieModel
 import com.krujz.verycreatives.BuildConfig
 import com.krujz.verycreatives.screens.common.contracts.HomeContract
-import com.krujz.verycreatives.screens.common.imageloader.ImageLoader
 import com.krujz.verycreatives.screens.common.presenter.BasePresenter
-import javax.inject.Inject
 
-class HomeFragmentPresenter constructor(private val repository: IMovieRepository, private val mapper: ICollectionItemsMapper<MovieEntity, MovieModel>) : BasePresenter(), HomeContract.Presenter {
+class HomeFragmentPresenter constructor(private val repository: IMovieRepository,
+                                        private val entityToDomainMapper: ICollectionItemsMapper<MovieEntity, MovieModel>,
+                                        private val domainToGridWrapperMapper: IGridDataWrapperMapper<MovieModel, GridMovieDataWrapper>
+                                        ) : BasePresenter(), HomeContract.Presenter {
 
     private val apiKey = BuildConfig.apiKey
 
@@ -19,22 +22,26 @@ class HomeFragmentPresenter constructor(private val repository: IMovieRepository
     override fun openMovieDetails() {
     }
 
+    override suspend fun getCollectionOfTopRatedGridMovieDataWrappers(page: Int): Collection<GridMovieDataWrapper> {
+        return domainToGridWrapperMapper.mapToCollectionOfGridDataWrapper(getTopRatedMovies(page))
+    }
+
     override suspend fun getPopularMovies(page: Int): Collection<MovieModel>{
         val collection = loadAllPopularMovies(page)
-        return mapper.mapToCollectionDomain(collection)
+        return entityToDomainMapper.mapToCollectionDomain(collection)
     }
 
      private suspend fun loadAllPopularMovies(page: Int): Collection<MovieEntity> {
         return repository.getCollectionOfPopularMovies(apiKey, page)
     }
 
-    override suspend fun getTopRatedMovies(page: Int): Collection<MovieModel>{
-        val collection = loadAllTopRatedMovies(page)
-        return mapper.mapToCollectionDomain(collection)
+    override suspend fun getCollectionOfPopularGridMovieDataWrappers(page: Int): Collection<GridMovieDataWrapper> {
+        return domainToGridWrapperMapper.mapToCollectionOfGridDataWrapper(getPopularMovies(page))
     }
 
-    override suspend fun loadMovieImages() {
-        TODO("Not yet implemented")
+    override suspend fun getTopRatedMovies(page: Int): Collection<MovieModel>{
+        val collection = loadAllTopRatedMovies(page)
+        return entityToDomainMapper.mapToCollectionDomain(collection)
     }
 
     private suspend fun loadAllTopRatedMovies(page: Int) : Collection<MovieEntity> {
