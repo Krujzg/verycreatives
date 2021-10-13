@@ -24,6 +24,10 @@ object ActivityModule {
 
     @Provides
     @ActivityScope
+    fun imageLoader(activity: AppCompatActivity) : IImageLoader = ImageLoader(activity)
+
+    @Provides
+    @ActivityScope
     fun mainPresenter(): MainContract.Presenter{
         return MainPresenter()
     }

@@ -12,7 +12,7 @@ class ImageLoader (private val activity: AppCompatActivity): IImageLoader {
 
     override fun loadImageUrlIntoImageView(imageUrl: String, target: ImageView) {
         val requestOptions = RequestOptions()
-        Glide.with(activity).load(BuildConfig.image_base_url + imageUrl)
+        Glide.with(activity).load(BuildConfig.image_base_url_without_slash + imageUrl)
             .apply(requestOptions).into(target)
     }
 
@@ -22,7 +22,7 @@ class ImageLoader (private val activity: AppCompatActivity): IImageLoader {
         progressbar: ProgressBar,
     ) {
         val requestOptions = RequestOptions()
-        GlideImageLoader(target, progressbar).load(BuildConfig.image_base_url + imageUrl, requestOptions)
+        GlideImageLoader(target, progressbar).load(BuildConfig.image_base_url_without_slash + imageUrl, requestOptions)
     }
 
     override fun loadImageDrawableIntoImageView(imageDrawable: Int, target: ImageView) {

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:layout_height="250dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="15dp">
+
+    <TextView
+        android:id="@+id/grid_text"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="15dp"
+        android:textAlignment="center"
+        android:textColor="@color/Black"
+        android:textSize="10sp" >
+    </TextView>
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/white"
+            >
+            <ImageView
+                android:id="@+id/grid_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+               >
+            </ImageView>
+        </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+            android:id="@+id/loading_progress_bar"
+            android:layout_width="100dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/main_color"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -24,16 +24,16 @@ android {
             buildConfigField "String" ,'apiKey', api_key
             buildConfigField "String" ,'base_url', base_url
             buildConfigField "String" ,'image_base_url', image_base_url
-            buildConfigField "String" ,'image_base_url_without_slash', base_url_without_slash
-            buildConfigField "String" ,'base_url_without_slash', image_base_url_without_slash
+            buildConfigField "String" ,'image_base_url_without_slash', image_base_url_without_slash
+            buildConfigField "String" ,'base_url_without_slash', base_url_without_slash
         }
         release {
             minifyEnabled false
             buildConfigField "String" ,'apiKey', api_key
             buildConfigField "String" ,'base_url', base_url
             buildConfigField "String" ,'image_base_url', image_base_url
-            buildConfigField "String" ,'image_base_url_without_slash', base_url_without_slash
-            buildConfigField "String" ,'base_url_without_slash', image_base_url_without_slash
+            buildConfigField "String" ,'image_base_url_without_slash', image_base_url_without_slash
+            buildConfigField "String" ,'base_url_without_slash', base_url_without_slash
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

@@ -15,17 +15,8 @@ data class MovieModel(
     @ColumnInfo(name="backDropPath")
     val backDropPath : String,
 
-    @ColumnInfo(name="isBelongToCollection")
-    var isBelongToCollection : Boolean? = null,
-
     @ColumnInfo(name="budget")
     val budget: Int,
-
-    @ColumnInfo(name="homePage")
-    val homePage: String,
-
-    @ColumnInfo(name="imdbId")
-    val imdbId: String,
 
     @ColumnInfo(name="originalLanguage")
     val originalLanguage : String,
@@ -51,12 +42,6 @@ data class MovieModel(
     @ColumnInfo(name="runtime")
     val runtime : Int,
 
-    @ColumnInfo(name="status")
-    val status: String,
-
-    @ColumnInfo(name="tagLine")
-    val tagLine: String,
-
     @ColumnInfo(name="title")
     val title : String,
 
@@ -64,7 +49,7 @@ data class MovieModel(
     val isThereAVideo: Boolean,
 
     @ColumnInfo(name="voteAverage")
-    val voteAverage:Boolean,
+    val voteAverage:Double,
 
     @ColumnInfo(name="voteCount")
     val voteCount: Int,

@@ -6,10 +6,12 @@
         <entry key="presentation/src/main/res/drawable-v24/rounded_corner.xml" value="0.4962962962962963" />
         <entry key="presentation/src/main/res/drawable-v24/rounded_edittext.xml" value="0.4962962962962963" />
         <entry key="presentation/src/main/res/drawable-v24/rounded_success_background.xml" value="0.4962962962962963" />
+        <entry key="presentation/src/main/res/drawable/rounded_corner.xml" value="0.5018518518518519" />
         <entry key="presentation/src/main/res/layout/app_bar_main.xml" value="0.4098731884057971" />
         <entry key="presentation/src/main/res/layout/content_main.xml" value="0.4098731884057971" />
         <entry key="presentation/src/main/res/layout/custom_alertdialogfragment.xml" value="0.4098731884057971" />
         <entry key="presentation/src/main/res/layout/custom_error_alertdialogfragment.xml" value="0.22282608695652173" />
+        <entry key="presentation/src/main/res/layout/grid_item.xml" value="0.4171195652173913" />
         <entry key="presentation/src/main/res/layout/home_fragment.xml" value="0.2803951367781155" />
         <entry key="presentation/src/main/res/layout/main_activity.xml" value="0.3302083333333333" />
         <entry key="presentation/src/main/res/layout/main_fragment.xml" value="0.5765625" />

@@ -6,12 +6,11 @@ import com.krujz.application.repository_interfaces.IMovieRepository
 import com.krujz.domain.models.MovieModel
 import com.krujz.verycreatives.BuildConfig
 import com.krujz.verycreatives.screens.common.contracts.HomeContract
+import com.krujz.verycreatives.screens.common.imageloader.ImageLoader
 import com.krujz.verycreatives.screens.common.presenter.BasePresenter
 import javax.inject.Inject
 
 class HomeFragmentPresenter constructor(private val repository: IMovieRepository, private val mapper: ICollectionItemsMapper<MovieEntity, MovieModel>) : BasePresenter(), HomeContract.Presenter {
-
-
 
     private val apiKey = BuildConfig.apiKey
 
@@ -32,6 +31,10 @@ class HomeFragmentPresenter constructor(private val repository: IMovieRepository
     override suspend fun getTopRatedMovies(page: Int): Collection<MovieModel>{
         val collection = loadAllTopRatedMovies(page)
         return mapper.mapToCollectionDomain(collection)
+    }
+
+    override suspend fun loadMovieImages() {
+        TODO("Not yet implemented")
     }
 
     private suspend fun loadAllTopRatedMovies(page: Int) : Collection<MovieEntity> {

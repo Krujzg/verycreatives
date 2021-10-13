@@ -12,5 +12,6 @@ interface HomeContract {
         fun openMovieDetails()
         suspend fun getPopularMovies(page: Int) : Collection<MovieModel>
         suspend fun getTopRatedMovies(page: Int): Collection<MovieModel>
+        suspend fun loadMovieImages()
     }
 }
