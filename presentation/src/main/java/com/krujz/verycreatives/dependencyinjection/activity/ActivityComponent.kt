@@ -1,15 +1,14 @@
 package com.krujz.verycreatives.dependencyinjection.activity
 
 import androidx.appcompat.app.AppCompatActivity
-import com.krujz.verycreatives.dependencyinjection.activity.modules.ActivityModule
-import com.krujz.verycreatives.dependencyinjection.activity.modules.MapperModule
-import com.krujz.verycreatives.dependencyinjection.activity.modules.UseCaseModule
+import androidx.fragment.app.Fragment
+import com.krujz.verycreatives.dependencyinjection.activity.modules.*
 import com.krujz.verycreatives.dependencyinjection.presentation.PresentationComponent
 import dagger.BindsInstance
 import dagger.Subcomponent
 
 @ActivityScope
-@Subcomponent(modules = [ActivityModule::class, UseCaseModule::class, MapperModule::class])
+@Subcomponent(modules = [ActivityModule::class,FragmentModule::class, UseCaseModule::class, MapperModule::class, RepositoryModule::class])
 interface ActivityComponent {
     fun newPresentationComponent() : PresentationComponent
 
@@ -18,7 +17,9 @@ interface ActivityComponent {
         @BindsInstance fun activity(activity: AppCompatActivity) : Builder
         fun activityModule(activityModule: ActivityModule) : Builder
         fun useCaseModule(useCaseModule: UseCaseModule): Builder
+        fun repositoryModule(repositoryModule: RepositoryModule): Builder
         fun mapperModule(mapperModule: MapperModule): Builder
+        fun fragmentModule(fragmentModule: FragmentModule): Builder
         fun build() : ActivityComponent
     }
 }

@@ -1,6 +1,6 @@
 package com.krujz.verycreatives.screens.common.contracts
 
-class MainContract {
+interface MainContract {
 
     interface View: BaseContract.View {
         fun showHomeFragment()

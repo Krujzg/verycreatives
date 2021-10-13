@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">206dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="login_imageview_margintop">20dp</dimen>
+    <dimen name="editText_username_login_width">320dp</dimen>
+    <dimen name="edittext_username_login_margintop">100dp</dimen>
+    <dimen name="edittet_username_login_drawable_padding">10dp</dimen>
+    <dimen name="edittext_password_login_drawable_padding">10dp</dimen>
+    <dimen name="edittext_password_login_margintop">15dp</dimen>
+    <dimen name="edittext_password_login_width">320dp</dimen>
+    <dimen name="login_button_margintop">20dp</dimen>
+    <dimen name="login_button_width">320dp</dimen>
+    <dimen name="register_text_textSize">16sp</dimen>
+    <dimen name="register_text_margintop">15dp</dimen>
+    <dimen name="loading_dialog_width">250dp</dimen>
+    <dimen name="loading_dialog_height">250dp</dimen>
+    <dimen name="alert_dialog_heigth">200dp</dimen>
+    <dimen name="imageview_size">300dp</dimen>
+</resources>

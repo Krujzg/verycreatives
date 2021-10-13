@@ -1,24 +1,19 @@
 package com.krujz.verycreatives.screens.main.fragments.home
 
-import com.krujz.application.MovieDetailsResult.CollectionSuccess
-import com.krujz.application.Result.Failure
 import com.krujz.application.entities.MovieEntity
 import com.krujz.application.mappers.ICollectionItemsMapper
-import com.krujz.application.usecase_interfaces.IFetchMovieUseCase
+import com.krujz.application.repository_interfaces.IMovieRepository
 import com.krujz.domain.models.MovieModel
 import com.krujz.verycreatives.BuildConfig
 import com.krujz.verycreatives.screens.common.contracts.HomeContract
 import com.krujz.verycreatives.screens.common.presenter.BasePresenter
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class HomeFragmentPresenter : BasePresenter(), HomeContract.Presenter {
+class HomeFragmentPresenter constructor(private val repository: IMovieRepository, private val mapper: ICollectionItemsMapper<MovieEntity, MovieModel>) : BasePresenter(), HomeContract.Presenter {
 
-    @Inject
-    lateinit var useCase: IFetchMovieUseCase
 
-    @Inject
-    private lateinit var mapper : ICollectionItemsMapper<MovieEntity, MovieModel>
+
+    private val apiKey = BuildConfig.apiKey
 
     private lateinit var view: HomeContract.View
 
@@ -30,19 +25,8 @@ class HomeFragmentPresenter : BasePresenter(), HomeContract.Presenter {
         return mapper.mapToCollectionDomain(collection)
     }
 
-     suspend fun loadAllPopularMovies(page: Int): Collection<MovieEntity> {
-        var collectionOfPopularMovies : Collection<MovieEntity> = arrayListOf()
-            try {
-                val result = useCase.fetchCollectionOfPopularMovies(BuildConfig.apiKey, page)
-                when(result){
-                    is CollectionSuccess -> collectionOfPopularMovies = result.movies
-                    is Failure -> setErrorMessage(result.errorMessage)
-                }
-            }
-            catch (e: Exception){
-
-            }
-        return collectionOfPopularMovies
+     private suspend fun loadAllPopularMovies(page: Int): Collection<MovieEntity> {
+        return repository.getCollectionOfPopularMovies(apiKey, page)
     }
 
     override suspend fun getTopRatedMovies(page: Int): Collection<MovieModel>{
@@ -50,21 +34,8 @@ class HomeFragmentPresenter : BasePresenter(), HomeContract.Presenter {
         return mapper.mapToCollectionDomain(collection)
     }
 
-    suspend fun loadAllTopRatedMovies(page: Int) : Collection<MovieEntity> {
-        var collectionOfTopRatedMovies : Collection<MovieEntity> = arrayListOf()
-        coroutineScope.launch {
-            try {
-                val result = useCase.fetchCollectionOfPopularMovies(BuildConfig.apiKey, page)
-                when(result){
-                    is CollectionSuccess -> collectionOfTopRatedMovies = result.movies
-                    is Failure -> setErrorMessage(result.errorMessage)
-                }
-            }
-            catch (e: Exception){
-
-            }
-        }.join()
-        return collectionOfTopRatedMovies
+    private suspend fun loadAllTopRatedMovies(page: Int) : Collection<MovieEntity> {
+       return repository.getCollectionOfPopularMovies(apiKey, page)
     }
 
     override fun attach(view: HomeContract.View) {

@@ -2,7 +2,7 @@ package com.krujz.verycreatives.screens.common.contracts
 
 import com.krujz.domain.models.MovieModel
 
-class HomeContract {
+interface HomeContract {
 
     interface View: BaseContract.View {
 

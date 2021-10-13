@@ -6,9 +6,6 @@ import javax.inject.Inject
 
 class MovieDetailsPresenter : MovieDetailsContract.Presenter {
 
-    @Inject
-    lateinit var useCase: IFetchMovieUseCase
-
     override fun loadSelectedMovie(id: Int) {
         TODO("Not yet implemented")
     }

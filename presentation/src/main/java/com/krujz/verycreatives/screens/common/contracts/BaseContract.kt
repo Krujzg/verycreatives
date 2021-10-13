@@ -1,6 +1,6 @@
 package com.krujz.verycreatives.screens.common.contracts
 
-class BaseContract {
+interface BaseContract {
 
     interface Presenter<in T> {
         fun attach(view: T)

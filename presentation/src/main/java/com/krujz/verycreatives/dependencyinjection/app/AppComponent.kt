@@ -4,7 +4,7 @@ import com.krujz.verycreatives.dependencyinjection.activity.ActivityComponent
 import dagger.Component
 
 @AppScope
-@Component(modules = [NetworkingAppModule::class, /*ViewModelFactoryModule::class*/])
+@Component(modules = [NetworkingAppModule::class])
 interface AppComponent {
    fun newActivityComponentBuilder() : ActivityComponent.Builder
 }

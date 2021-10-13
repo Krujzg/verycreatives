@@ -5,9 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.krujz.verycreatives.BaseApplication
 import com.krujz.verycreatives.R
-import com.krujz.verycreatives.dependencyinjection.activity.modules.ActivityModule
-import com.krujz.verycreatives.dependencyinjection.activity.modules.MapperModule
-import com.krujz.verycreatives.dependencyinjection.activity.modules.UseCaseModule
+import com.krujz.verycreatives.dependencyinjection.activity.modules.*
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -19,7 +17,9 @@ open class BaseActivity : AppCompatActivity() {
         appComponent.newActivityComponentBuilder()
             .activity(this)
             .activityModule(ActivityModule)
+            .fragmentModule(FragmentModule)
             .useCaseModule(UseCaseModule)
+            .repositoryModule(RepositoryModule)
             .mapperModule(MapperModule)
             .build()
     }

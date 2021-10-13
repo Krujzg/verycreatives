@@ -1,6 +1,6 @@
 package com.krujz.verycreatives.screens.common.contracts
 
-class MovieDetailsContract {
+interface MovieDetailsContract {
 
     interface View: BaseContract.View {
 
