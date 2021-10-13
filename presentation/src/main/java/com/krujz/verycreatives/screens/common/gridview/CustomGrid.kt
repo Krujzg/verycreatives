@@ -35,21 +35,15 @@ class CustomGrid(private val mContext: Context,
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val grid: View
-        val inflater = mContext
-            .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        if (convertView == null) {
-            grid = inflater.inflate(R.layout.grid_item, null)
-            val titleTextview : TextView = grid.findViewById(R.id.grid_text)
-            val voteAverageTextView: TextView = grid.findViewById(R.id.vote_average)
-            val posterImageView: ImageView = grid.findViewById(R.id.grid_image)
-            val progressBar: ProgressBar = grid.findViewById(R.id.loading_progress_bar)
-            titleTextview.text = data[position].title
-            voteAverageTextView.text = "${data[position].voteAverage}"
-            imageLoader.loadImageUrlIntoImageViewWithProgressBar(data[position].posterPath,posterImageView, progressBar)
-        } else {
-            grid = convertView as View
-        }
+        val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        var grid: View = inflater.inflate(R.layout.grid_item, null)
+        val titleTextview : TextView = grid.findViewById(R.id.grid_text)
+        val voteAverageTextView: TextView = grid.findViewById(R.id.vote_average)
+        val posterImageView: ImageView = grid.findViewById(R.id.grid_image)
+        val progressBar: ProgressBar = grid.findViewById(R.id.loading_progress_bar)
+        titleTextview.text = data[position].title
+        voteAverageTextView.text = "${data[position].voteAverage}"
+        imageLoader.loadImageUrlIntoImageViewWithProgressBar(data[position].posterPath,posterImageView, progressBar)
         return grid
     }
 }
