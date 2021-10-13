@@ -21,6 +21,7 @@
     <color name="black_overlay">#66000000</color>
     <color name="main_color">#d96a36</color>
     <color name="grey">#C0C0C0</color>
+    <color name="dark_grey">#747474</color>
     <color name="light_background">#e3e7ed</color>
     <color name="transparent_main_color">#CCd96a36</color>
 </resources>
