@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="presentation/src/main/res/drawable-anydpi/ic_check.xml" value="0.5018518518518519" />
+        <entry key="presentation/src/main/res/drawable-anydpi/ic_checking.xml" value="0.5018518518518519" />
+        <entry key="presentation/src/main/res/drawable-anydpi/ic_clear.xml" value="0.5018518518518519" />
+        <entry key="presentation/src/main/res/drawable-anydpi/ic_distance.xml" value="0.5018518518518519" />
+        <entry key="presentation/src/main/res/drawable-anydpi/ic_download.xml" value="0.5018518518518519" />
         <entry key="presentation/src/main/res/drawable-v24/rounded_corner.xml" value="0.4962962962962963" />
         <entry key="presentation/src/main/res/drawable-v24/rounded_edittext.xml" value="0.4962962962962963" />
         <entry key="presentation/src/main/res/drawable-v24/rounded_success_background.xml" value="0.4962962962962963" />
+        <entry key="presentation/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.5018518518518519" />
         <entry key="presentation/src/main/res/drawable/rounded_corner.xml" value="0.5018518518518519" />
         <entry key="presentation/src/main/res/drawable/rounded_error_background.xml" value="0.5018518518518519" />
         <entry key="presentation/src/main/res/drawable/rounded_imageview.xml" value="0.5018518518518519" />
