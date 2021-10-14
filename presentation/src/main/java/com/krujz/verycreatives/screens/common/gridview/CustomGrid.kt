@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.core.view.ViewCompat
 import com.krujz.domain.models.GridMovieDataWrapper
 import com.krujz.verycreatives.R
 import com.krujz.verycreatives.screens.common.imageloader.IImageLoader
@@ -36,7 +37,8 @@ class CustomGrid(private val mContext: Context,
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var grid: View = inflater.inflate(R.layout.grid_item, null)
+        val grid: View = inflater.inflate(R.layout.grid_item, null)
+        grid.isNestedScrollingEnabled = true;
         val titleTextview : TextView = grid.findViewById(R.id.grid_text)
         val voteAverageTextView: TextView = grid.findViewById(R.id.vote_average)
         val posterImageView: ImageView = grid.findViewById(R.id.grid_image)

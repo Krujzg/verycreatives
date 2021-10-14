@@ -12,6 +12,7 @@
     <color name="TransparentWhite">#FFFFFFFF</color>
     <color name="transparentBlack">#00000000</color>
     <color name="semiTransparentBlack">#40000000</color>
+    <color name="semiTransparentWhite">#FFFFFFFF</color>
     <color name="blue">#2b4afd</color>
     <color name="background">#E4E7ED</color>
     <color name="title">#4D5367</color>
@@ -19,7 +20,8 @@
     <color name="icon_color_dark">#000000</color>
     <color name="icon_color_light">#E4E7ED</color>
     <color name="black_overlay">#66000000</color>
-    <color name="main_color">#d96a36</color>
+    <color name="main_color">#f4ce35</color>
+    <color name="nav_bar_color">#c29800</color>
     <color name="grey">#C0C0C0</color>
     <color name="dark_grey">#747474</color>
     <color name="light_background">#e3e7ed</color>

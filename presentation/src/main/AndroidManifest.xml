@@ -17,7 +17,8 @@
         android:theme="@style/Theme.VeryCreatives">
         <activity
             android:name=".screens.main.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.VeryCreatives">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
