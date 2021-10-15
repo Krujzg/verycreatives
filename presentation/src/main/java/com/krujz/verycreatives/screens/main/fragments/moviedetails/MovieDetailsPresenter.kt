@@ -7,11 +7,12 @@ import com.krujz.application.services.IFavoriteMoviesService
 import com.krujz.domain.models.MovieModel
 import com.krujz.verycreatives.BuildConfig
 import com.krujz.verycreatives.screens.common.contracts.MovieDetailsContract
+import com.krujz.verycreatives.screens.common.presenter.BasePresenter
 
 class MovieDetailsPresenter(private val service: IFavoriteMoviesService,
                             private val repository: IMovieRepository,
                             private val entityToDomainMapper: ISingleItemMapper<MovieEntity, MovieModel>
-) : MovieDetailsContract.Presenter {
+) :BasePresenter(), MovieDetailsContract.Presenter {
 
     private var currentMovie: MovieModel? = null
     private val apiKey = BuildConfig.apiKey
@@ -24,12 +25,18 @@ class MovieDetailsPresenter(private val service: IFavoriteMoviesService,
                 currentMovie = entityToDomainMapper.mapToDomain(currentMovieEntity!!)
                 currentMovie
             }
-            false -> null
+            false -> {
+                getSelectedMovieFromOnDeviceDb(movieId)
+            }
         }
     }
 
     private suspend fun loadSelectedMovie(movieId: Int): MovieEntity? {
         return repository.getSelectedMovieById(apiKey, movieId)
+    }
+
+    private suspend fun getSelectedMovieFromOnDeviceDb(movieId: Int): MovieModel?{
+        return service.getSelectedMovie(movieId)
     }
 
     private fun checkIfCurrentMovieEntityIsNotNull(currentMovieEntity: MovieEntity?) : Boolean{

@@ -20,6 +20,10 @@ class FavoritesService(application: Application) : IFavoriteMoviesService {
         return movieDao.getSelectedMovieFavoriteStatus(movieId) != null
     }
 
+    override suspend fun getSelectedMovie(movieId : Int): MovieModel? {
+        return movieDao.getSelectedMovieFavoriteStatus(movieId)
+    }
+
     override suspend fun addNewMovieToTheOnDeviceDb(movieModel: MovieModel){
         movieDao.addNewMovie(movieModel)
     }

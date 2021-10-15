@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">verycreatives</string>
+    <string name="app_name">movies</string>
     <string name="press_again_to_quit">Nyomd meg újra a kilépéshez!</string>
     <string name="title_home">VeryCreatives</string>
     <string name="title_moviedetails">Movie</string>

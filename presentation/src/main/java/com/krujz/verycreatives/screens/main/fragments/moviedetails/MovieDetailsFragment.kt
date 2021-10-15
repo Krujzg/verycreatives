@@ -82,11 +82,12 @@ class MovieDetailsFragment : BaseFragment(), MovieDetailsContract.View {
     }
 
     private fun getSelectedMovie(){
-        coroutineScope.launch {
+        coroutineScopeIO.launch {
             val selectedMovieId = getMovieIdFromBundle()
             currentMovie = presenter.getSelectedMovie(selectedMovieId)
-            getSelectedMovieFavoriteStatus()
-            setUi()
+            if (currentMovie !=null){
+                getSelectedMovieFavoriteStatus()
+            }
         }
     }
 
@@ -102,7 +103,10 @@ class MovieDetailsFragment : BaseFragment(), MovieDetailsContract.View {
             true -> R.drawable.ic_baseline_star_24
             false -> R.drawable.ic_baseline_star_outline_24
         }
-        favoriteStart.setImageResource(starButtonDrawable)
+        coroutineScope.launch {
+            favoriteStart.setImageResource(starButtonDrawable)
+            setUi()
+        }
     }
 
     private fun setUpFavoriteStarOnClickListener(){

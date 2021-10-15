@@ -56,15 +56,19 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         coroutineScope.launch {
             collectionOfMovies.clear()
             when(movieType){
-                AlertDialogFragment.TOP_RATED_TAG -> {
-                    collectionOfMovies.addAll(presenter.getTopRatedMovies(1) as ArrayList<MovieItemData>)
-                }
-                AlertDialogFragment.POPULAR_TAG -> {
-                    collectionOfMovies.addAll(presenter.getPopularMovies(1) as ArrayList<MovieItemData>)
-                }
+                AlertDialogFragment.TOP_RATED_TAG -> getTopRatedMovies()
+                AlertDialogFragment.POPULAR_TAG -> getPopularMovies()
             }
             setMoviesIntoGridLayout()
         }
+    }
+
+    private suspend fun getTopRatedMovies(){
+        collectionOfMovies.addAll(presenter.getTopRatedMovies(1) as ArrayList<MovieItemData>)
+    }
+
+    private suspend fun getPopularMovies(){
+        collectionOfMovies.addAll(presenter.getPopularMovies(1) as ArrayList<MovieItemData>)
     }
 
     private fun setMoviesIntoGridLayout(){
