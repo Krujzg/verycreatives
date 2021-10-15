@@ -7,7 +7,6 @@ import com.krujz.infrastructure.ondevicedb.typeconverters.GenreTypeConverter
 import com.krujz.infrastructure.ondevicedb.typeconverters.LanguageTypeConverter
 
 @Database(entities = [MovieModel::class], version = 1, exportSchema = false)
-//@TypeConverters(LanguageTypeConverter::class, GenreTypeConverter::class)
 abstract class MovieOnDeviceDatabase: RoomDatabase() {
 
     abstract fun movieDao(): MovieDao

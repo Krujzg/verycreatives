@@ -64,9 +64,10 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$androidXLegacySupport"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
-
-    // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+    //RecyclerView
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
 
     // gson
     implementation "com.google.code.gson:gson:$gsonVersion"

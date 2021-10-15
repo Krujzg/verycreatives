@@ -17,10 +17,11 @@ open class BaseActivity : AppCompatActivity() {
         appComponent.newActivityComponentBuilder()
             .activity(this)
             .activityModule(ActivityModule)
-            .fragmentModule(FragmentModule)
             .useCaseModule(UseCaseModule)
             .repositoryModule(RepositoryModule)
+            .serviceModule(ServiceModule)
             .mapperModule(MapperModule)
+            .fragmentModule(FragmentModule)
             .build()
     }
 

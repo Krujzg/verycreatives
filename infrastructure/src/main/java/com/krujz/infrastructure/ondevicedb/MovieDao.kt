@@ -1,6 +1,5 @@
 package com.krujz.infrastructure.ondevicedb
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.Insert
 import com.krujz.domain.models.MovieModel
@@ -10,11 +9,11 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun addNewMovie(movie: MovieModel)
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun addCollectionOfNewMovies(movie: Collection<MovieModel>)
-
     @Query("SELECT * FROM movie_db")
-    fun getAllMovies() : LiveData<List<MovieModel>>
+    fun getAllMovies() : Array<MovieModel>
+
+    @Query("SELECT * FROM movie_db WHERE id = :movieId")
+    fun getSelectedMovieFavoriteStatus(movieId: Int) : MovieModel?
 
     @Delete
     suspend fun deleteMovie(movie: MovieModel)

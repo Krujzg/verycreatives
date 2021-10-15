@@ -15,10 +15,19 @@
             app:destination="@id/navigation_movie_details" />
     </fragment>
 
+
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.krujz.verycreatives.screens.main.fragments.favorites.FavoritesFragment"
+        tools:layout="@layout/favorites_fragment" >
+        <action
+            android:id="@+id/action_navigation_favorites_to_navigation_movie_details"
+            app:destination="@id/navigation_movie_details" />
+    </fragment>
+
     <fragment
         android:id="@+id/navigation_movie_details"
         android:name="com.krujz.verycreatives.screens.main.fragments.moviedetails.MovieDetailsFragment"
-        android:label="@string/title_moviedetails"
         tools:layout="@layout/movie_details_fragment" />
 
 </navigation>
