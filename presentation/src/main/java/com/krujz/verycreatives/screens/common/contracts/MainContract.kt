@@ -4,7 +4,7 @@ interface MainContract {
 
     interface View: BaseContract.View {
         fun showHomeFragment()
-        fun showMovieDetailFragment()
+        fun showFavoritesFragment()
     }
 
     interface Presenter: BaseContract.Presenter<View> {

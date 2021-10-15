@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.krujz.application.mappers.IMovieDataModelMapper
 import com.krujz.domain.models.MovieItemData
+import com.krujz.domain.models.MovieModel
 import com.krujz.verycreatives.R
 import com.krujz.verycreatives.screens.common.contracts.FavoritesContract
 import com.krujz.verycreatives.screens.common.fragment.BaseFragment
@@ -18,41 +20,51 @@ class FavoritesFragment: BaseFragment(), FavoritesContract.View {
 
     private var collectionOfMovies: ArrayList<MovieItemData> = arrayListOf()
 
+
     @Inject
     lateinit var presenter: FavoritesContract.Presenter
     @Inject
     lateinit var imageLoader: IImageLoader
+    @Inject
+    lateinit var mapper: IMovieDataModelMapper<MovieModel, MovieItemData>
 
-    private val recyclerAdapter = FavoritesFragmentRecyclerAdapter(requireContext(), imageLoader)
+    private lateinit var recyclerAdapter : FavoritesFragmentRecyclerAdapter
 
-    private val linearLayoutManager: LinearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-    private val recyclerView : RecyclerView = requireView().findViewById(R.id.favorites_recycler_view)
+    lateinit var linearLayoutManager: LinearLayoutManager
+    lateinit var recyclerView : RecyclerView
 
+    override fun onStart() {
+        super.onStart()
+        linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerView = requireView().findViewById(R.id.favorites_recycler_view)
+        recyclerAdapter = FavoritesFragmentRecyclerAdapter(requireView().context, imageLoader)
+        setMovieRecyclerViewComponents()
+        addMoviesToTheRecyclerView()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.inject(this)
         super.onCreate(savedInstanceState)
         getFavoriteMovies()
-        setMovieRecyclerViewComponents()
-        addMoviesToTheRecyclerView()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.favorites_fragment, container, false)
 
+        return inflater.inflate(R.layout.favorites_fragment, container, false)
     }
 
     private fun getFavoriteMovies(){
-        coroutineScope.launch {
-            collectionOfMovies.addAll(presenter.getFavoriteMovies() as ArrayList<MovieItemData>)
+        coroutineScopeIO.launch {
+            val arrayOfMovies = presenter.getFavoriteMovies()
+            collectionOfMovies.addAll(mapper.mapToCollectionOfGridDataWrapper(arrayOfMovies))
         }
     }
 
     private fun setMovieRecyclerViewComponents() {
         recyclerView.apply {
-            adapter = recyclerAdapter as RecyclerView.Adapter<FavoritesFragmentRecyclerAdapter.FavoritesFragmentViewHolder>
+            adapter = recyclerAdapter
             layoutManager = linearLayoutManager
         }
     }
@@ -64,5 +76,9 @@ class FavoritesFragment: BaseFragment(), FavoritesContract.View {
 
     private fun clearMoviesFromTheRecyclerView(){
         recyclerAdapter.clearListOfMovies()
+    }
+
+    companion object{
+        const val TAG = "FavoritesFragment"
     }
 }

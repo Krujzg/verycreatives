@@ -65,8 +65,4 @@ class MovieDetailsPresenter(private val service: IFavoriteMoviesService,
     override fun attach(view: MovieDetailsContract.View) {
         this.view = view
     }
-
-
-
-
 }

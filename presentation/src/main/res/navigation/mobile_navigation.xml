@@ -11,6 +11,9 @@
         android:label="@string/title_home"
         tools:layout="@layout/home_fragment" >
         <action
+            android:id="@+id/action_navigation_home_to_navigation_favorites"
+            app:destination="@id/navigation_favorites" />
+        <action
             android:id="@+id/action_navigation_home_to_navigation_movie_details"
             app:destination="@id/navigation_movie_details" />
     </fragment>
@@ -23,11 +26,21 @@
         <action
             android:id="@+id/action_navigation_favorites_to_navigation_movie_details"
             app:destination="@id/navigation_movie_details" />
+        <action
+            android:id="@+id/action_navigation_favorites_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_movie_details"
         android:name="com.krujz.verycreatives.screens.main.fragments.moviedetails.MovieDetailsFragment"
-        tools:layout="@layout/movie_details_fragment" />
+        tools:layout="@layout/movie_details_fragment" >
+        <action
+            android:id="@+id/action_navigation_movie_details_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_movie_details_to_navigation_favorites"
+            app:destination="@id/navigation_favorites" />
+    </fragment>
 
 </navigation>

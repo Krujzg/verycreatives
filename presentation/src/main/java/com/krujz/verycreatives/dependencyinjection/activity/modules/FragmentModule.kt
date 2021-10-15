@@ -1,11 +1,9 @@
 package com.krujz.verycreatives.dependencyinjection.activity.modules
 
-import android.content.Context
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.krujz.application.entities.MovieEntity
 import com.krujz.application.mappers.ICollectionItemsMapper
-import com.krujz.application.mappers.IGridDataWrapperMapper
+import com.krujz.application.mappers.IMovieDataModelMapper
 import com.krujz.application.mappers.ISingleItemMapper
 import com.krujz.application.repository_interfaces.IMovieRepository
 import com.krujz.application.services.IFavoriteMoviesService
@@ -31,7 +29,7 @@ object FragmentModule {
     @Provides
     fun homeFragmentPresenter(repository: IMovieRepository,
                               entityToDomainMapper: ICollectionItemsMapper<MovieEntity, MovieModel>,
-                              domainToMapperItem: IGridDataWrapperMapper<MovieModel, MovieItemData>): HomeContract.Presenter{
+                              domainToMapperItem: IMovieDataModelMapper<MovieModel, MovieItemData>): HomeContract.Presenter{
         return HomeFragmentPresenter(repository, entityToDomainMapper, domainToMapperItem)
     }
 

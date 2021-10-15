@@ -2,7 +2,7 @@ package com.krujz.verycreatives.screens.main.fragments.home
 
 import com.krujz.application.entities.MovieEntity
 import com.krujz.application.mappers.ICollectionItemsMapper
-import com.krujz.application.mappers.IGridDataWrapperMapper
+import com.krujz.application.mappers.IMovieDataModelMapper
 import com.krujz.application.repository_interfaces.IMovieRepository
 import com.krujz.domain.models.MovieItemData
 import com.krujz.domain.models.MovieModel
@@ -12,7 +12,7 @@ import com.krujz.verycreatives.screens.common.presenter.BasePresenter
 
 class HomeFragmentPresenter constructor(private val repository: IMovieRepository,
                                         private val entityToDomainMapper: ICollectionItemsMapper<MovieEntity, MovieModel>,
-                                        private val domainToMapperItem: IGridDataWrapperMapper<MovieModel, MovieItemData>
+                                        private val domainToMapperItem: IMovieDataModelMapper<MovieModel, MovieItemData>
                                         ) : BasePresenter(), HomeContract.Presenter {
 
     private val apiKey = BuildConfig.apiKey

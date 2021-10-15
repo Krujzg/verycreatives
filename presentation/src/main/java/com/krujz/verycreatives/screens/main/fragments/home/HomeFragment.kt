@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.GridView
 import android.widget.Toast
+import androidx.navigation.Navigation
 import com.krujz.domain.models.MovieItemData
 import com.krujz.verycreatives.R
 import com.krujz.verycreatives.screens.common.contracts.HomeContract
@@ -51,7 +52,23 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         val grid = requireView().findViewById<View>(R.id.grid) as GridView
         grid.adapter = adapter
         grid.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            Toast.makeText(context, "You Clicked at ", Toast.LENGTH_SHORT).show()
+            val bundle = getBundleOfMovieId(collectionOfMovies[position].id)
+            moveToMovieDetailsFragment(bundle)
         }
+    }
+
+    private fun moveToMovieDetailsFragment(bundle: Bundle){
+        Navigation.findNavController(requireView()).navigate(R.id.action_navigation_home_to_navigation_movie_details,bundle);
+    }
+
+    private fun getBundleOfMovieId(movieId: Int) : Bundle{
+        val bundle = Bundle()
+        bundle.putInt("movieId", movieId)
+        bundle.putString("prevFragment",TAG )
+        return bundle
+    }
+
+    companion object{
+        const val TAG = "HomeFragment"
     }
 }

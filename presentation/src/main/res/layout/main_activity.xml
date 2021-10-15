@@ -66,18 +66,21 @@
                         android:layout_gravity="end"
                         android:gravity="end"
                         android:orientation="horizontal">
-                        <ImageView
+                        <ImageButton
+                            android:id="@+id/go_to_fav_fragment_button"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:src="@drawable/ic_baseline_star_outline_24"
+                            android:background="@color/transparent"
                             android:scaleType="center"
                             android:layout_marginEnd="20dp"
                             />
 
-                        <ImageView
+                        <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:src="@drawable/ic_baseline_filter_list_24"
+                            android:background="@color/transparent"
                             android:scaleType="center"
                             android:layout_marginEnd="20dp"
                             />

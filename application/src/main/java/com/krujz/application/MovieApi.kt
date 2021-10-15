@@ -20,9 +20,9 @@ interface MovieApi {
         @Query("page") page: Int = 1,
     ) : Call<MovieCollectionResponse>
 
-    @GET("movie/{movieId}")
+    @GET("movie/{movie_id}")
     fun getSelectedMovieById(
-        @Query("api_key") apiKey: String,
         @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String,
     ) : Call<MovieEntity>
 }

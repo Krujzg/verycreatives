@@ -47,7 +47,7 @@ class FetchMovieUseCase(private val movieApi: MovieApi) : BaseFetchUseCase(), IF
         return withContext(Dispatchers.IO) {
             var result: Result
             try {
-                val response = movieApi.getSelectedMovieById(apiKey, movieId = movieId).awaitResponse()
+                val response = movieApi.getSelectedMovieById(movieId = movieId, apiKey).awaitResponse()
                 result = getSingleResultOnResponse(response)
                 return@withContext result
             } catch (t: Throwable) {

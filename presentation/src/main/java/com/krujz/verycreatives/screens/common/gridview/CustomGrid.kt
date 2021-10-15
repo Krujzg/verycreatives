@@ -19,7 +19,7 @@ import com.krujz.verycreatives.screens.common.imageloader.IImageLoader
 
 class CustomGrid(private val mContext: Context,
                  private val data: ArrayList<MovieItemData>,
-                 private val imageLoader: IImageLoader) :
+                 private val imageLoader: IImageLoader):
     BaseAdapter() {
 
     override fun getCount(): Int {
