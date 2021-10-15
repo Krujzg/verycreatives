@@ -37,18 +37,18 @@ class DialogNavigator(private val fragmentManager: FragmentManager): IDialogNavi
         }
     }
 
-    override fun showNormalAlertDialog(title: String, message: String) {
-        when (checkIfDialogIsAlive(SHOE_SIDE_ALERT_DIALOG_TAG)){
+    override fun showNormalAlertDialog() {
+        when (checkIfDialogIsAlive(SELECTOR_ALERT_DIALOG_TAG)){
             false -> {
                 fragmentManager.beginTransaction()
-                        .add(AlertDialogFragment.newInstance(title, message), SHOE_SIDE_ALERT_DIALOG_TAG)
+                        .add(AlertDialogFragment.newInstance(), SELECTOR_ALERT_DIALOG_TAG)
                         .commitAllowingStateLoss()
             }
         }
     }
 
-    override fun dismissShoeSideAlertDialog(){
-        val dialogFragment = fragmentManager.findFragmentByTag(SHOE_SIDE_ALERT_DIALOG_TAG)
+    override fun dismissNormalAlertDialog(){
+        val dialogFragment = fragmentManager.findFragmentByTag(SELECTOR_ALERT_DIALOG_TAG)
         if (dialogFragment != null){
             val df = dialogFragment as DialogFragment
             df.dismiss()
@@ -94,11 +94,10 @@ class DialogNavigator(private val fragmentManager: FragmentManager): IDialogNavi
     }
 
     companion object{
+        const val SELECTOR_ALERT_DIALOG_TAG = "SelectorAlertDialog"
         const val ERROR_ALERT_DIALOG_TAG = "ErrorAlertDialog"
         const val SUCCESS_ALERT_DIALOG_TAG = "SuccessAlertDialog"
         const val WARNING_ALERT_DIALOG_TAG = "WarningAlertDialog"
-        const val SHOE_SIDE_ALERT_DIALOG_TAG = "ShoeSideAlertDialog"
-        const val READER_POWER_SEEKBAR_ALERT_DIALOG_TAG = "ReaderPowerSeekBarAlertDialog"
         const val ENLARGE_IMAGEVIEW_ALERT_DIALOG_TAG = "Enlarge_ImageView_AlertDialog"
         const val LOADING_ALERT_DIALOG_TAG = "LoadingAlertDialog"
     }

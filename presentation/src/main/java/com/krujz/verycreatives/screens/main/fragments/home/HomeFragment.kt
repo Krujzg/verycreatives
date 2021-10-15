@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.krujz.domain.models.MovieItemData
 import com.krujz.verycreatives.R
 import com.krujz.verycreatives.screens.common.contracts.HomeContract
+import com.krujz.verycreatives.screens.common.dialogs.AlertDialogFragment
 import com.krujz.verycreatives.screens.common.fragment.BaseFragment
 import com.krujz.verycreatives.screens.common.gridview.CustomGrid
 import com.krujz.verycreatives.screens.common.imageloader.IImageLoader
@@ -20,16 +21,27 @@ import javax.inject.Inject
 
 class HomeFragment : BaseFragment(), HomeContract.View {
 
-    lateinit var collectionOfMovies: ArrayList<MovieItemData>
+    var collectionOfMovies: ArrayList<MovieItemData> = arrayListOf()
     @Inject
     lateinit var presenter : HomeContract.Presenter
     @Inject
     lateinit var imageLoader: IImageLoader
 
+    private fun getMovieTypeFromBundle(): String{
+        return when(arguments != null){
+            true  -> requireArguments()["movieTypeTag"] as String
+            false -> AlertDialogFragment.TOP_RATED_TAG
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.inject(this)
         super.onCreate(savedInstanceState)
-        getMovies()
+        val movieType = getMovieTypeFromBundle()
+        if (movieType.isNotEmpty()){
+            getMovies(movieType)
+        }
+
     }
 
     override fun onCreateView(
@@ -40,9 +52,17 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
     }
 
-    private fun getMovies(){
+    private fun getMovies(movieType: String){
         coroutineScope.launch {
-            collectionOfMovies = presenter.getTopRatedMovies(1) as ArrayList<MovieItemData>
+            collectionOfMovies.clear()
+            when(movieType){
+                AlertDialogFragment.TOP_RATED_TAG -> {
+                    collectionOfMovies.addAll(presenter.getTopRatedMovies(1) as ArrayList<MovieItemData>)
+                }
+                AlertDialogFragment.POPULAR_TAG -> {
+                    collectionOfMovies.addAll(presenter.getPopularMovies(1) as ArrayList<MovieItemData>)
+                }
+            }
             setMoviesIntoGridLayout()
         }
     }

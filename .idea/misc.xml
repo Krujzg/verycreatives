@@ -8,6 +8,7 @@
         <entry key="presentation/src/main/res/drawable-anydpi/ic_clear.xml" value="0.5018518518518519" />
         <entry key="presentation/src/main/res/drawable-anydpi/ic_distance.xml" value="0.5018518518518519" />
         <entry key="presentation/src/main/res/drawable-anydpi/ic_download.xml" value="0.5018518518518519" />
+        <entry key="presentation/src/main/res/drawable-anydpi/rounded_background_maincolor.xml" value="0.5927083333333333" />
         <entry key="presentation/src/main/res/drawable-v24/rounded_corner.xml" value="0.4962962962962963" />
         <entry key="presentation/src/main/res/drawable-v24/rounded_edittext.xml" value="0.4962962962962963" />
         <entry key="presentation/src/main/res/drawable-v24/rounded_success_background.xml" value="0.4962962962962963" />
@@ -20,6 +21,8 @@
         <entry key="presentation/src/main/res/layout/copy_gird_item.xml" value="0.4171195652173913" />
         <entry key="presentation/src/main/res/layout/custom_alertdialogfragment.xml" value="0.4098731884057971" />
         <entry key="presentation/src/main/res/layout/custom_error_alertdialogfragment.xml" value="0.22282608695652173" />
+        <entry key="presentation/src/main/res/layout/custom_select_between_options_alertdialogfragment.xml" value="0.5765625" />
+        <entry key="presentation/src/main/res/layout/custom_warning_alertdialogfragment.xml" value="0.5765625" />
         <entry key="presentation/src/main/res/layout/favorites_fragment.xml" value="0.416213768115942" />
         <entry key="presentation/src/main/res/layout/grid_item.xml" value="0.4171195652173913" />
         <entry key="presentation/src/main/res/layout/home_fragment.xml" value="0.2803951367781155" />

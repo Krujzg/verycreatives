@@ -1,61 +1,74 @@
 package com.krujz.verycreatives.screens.common.dialogs
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
 import com.krujz.verycreatives.R
+import com.krujz.verycreatives.screens.common.ISelectorOnButtonClick
+import com.krujz.verycreatives.screens.main.MainActivity
 
 
-class AlertDialogFragment constructor(private val title: String, private val message: String) : BaseDialog() {
+class AlertDialogFragment : BaseDialog() {
 
-    private lateinit var titleTextView: TextView
-    private lateinit var messageTextView: TextView
+    private lateinit var alertdialog_show_popular_button_selector : AppCompatButton
+    private lateinit var alertdialog_show_top_rated_button_selector: AppCompatButton
+
+    var listener: ISelectorOnButtonClick ? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as ISelectorOnButtonClick
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setBackGround()
-        return inflater.inflate(R.layout.custom_alertdialogfragment, container, false)
+        return requireActivity().layoutInflater.inflate(R.layout.custom_select_between_options_alertdialogfragment, container, false)
+    }
+
+    private fun sendSelectedDataToTheFragment(movieTag: String){
+        listener!!.onSelectorButtonClick(movieTag)
+        dismiss()
     }
 
     override fun onStart() {
         super.onStart()
-        setFindViewById()
-        setTitle()
-        setMessage()
+        setFindViewByIds()
+        setUpPopularButtonClickListener()
+        setUpTopRatedButtonClickListener()
+    }
+
+    private fun setFindViewByIds(){
+        alertdialog_show_popular_button_selector = dialog!!.window?.findViewById(R.id.alertdialog_show_popular_button_selector)!!
+        alertdialog_show_top_rated_button_selector = dialog!!.window?.findViewById(R.id.alertdialog_show_top_rated_button_selector)!!
+    }
+
+    private fun setUpPopularButtonClickListener(){
+        alertdialog_show_popular_button_selector.setOnClickListener{
+            sendSelectedDataToTheFragment(POPULAR_TAG)
+        }
+    }
+
+    private fun setUpTopRatedButtonClickListener(){
+        alertdialog_show_top_rated_button_selector.setOnClickListener{
+            sendSelectedDataToTheFragment(TOP_RATED_TAG)
+        }
     }
 
     private fun setBackGround(){
         dialog!!.window?.setBackgroundDrawableResource(R.drawable.rounded_corner);
     }
 
-    private fun setFindViewById(){
-        titleTextView = dialog!!.window?.findViewById(R.id.alertdialog_title)!!
-        messageTextView = dialog!!.window?.findViewById(R.id.alertdialog_message)!!
-    }
-
-    private fun setTitle(){
-        titleTextView.text = title
-    }
-
-    private fun setMessage(){
-        messageTextView.text = message
-    }
-
-    override fun onResume() {
-        super.onResume()
-        setSize()
-    }
-
-    private fun setSize(){
-        val width = resources.getDimensionPixelSize(R.dimen.loading_dialog_width)
-        val height = resources.getDimensionPixelSize(R.dimen.alert_dialog_heigth)
-        dialog!!.window!!.setLayout(width, height)
-    }
-
     companion object {
-        fun newInstance(title: String, message: String): AlertDialogFragment {
-            return AlertDialogFragment(title, message)
+        fun newInstance(): AlertDialogFragment {
+            return AlertDialogFragment()
         }
+        const val POPULAR_TAG = "popular"
+        const val TOP_RATED_TAG = "top rated"
     }
 }

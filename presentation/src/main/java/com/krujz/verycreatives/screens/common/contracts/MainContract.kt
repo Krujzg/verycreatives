@@ -3,7 +3,7 @@ package com.krujz.verycreatives.screens.common.contracts
 interface MainContract {
 
     interface View: BaseContract.View {
-        fun showHomeFragment()
+        fun showHomeFragment(movieTypeTag: String)
         fun showFavoritesFragment()
     }
 

@@ -1,0 +1,53 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@drawable/rounded_corner">
+
+    <TextView
+        android:id="@+id/alertdialog_title_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/Black"
+        android:textAllCaps="false"
+        android:layout_marginEnd="10dp"
+        android:text="In which order would\nyou like me to list \nthe movies?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/alertdialog_show_popular_button_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:textSize="10dp"
+        android:text="The hot stuff!\n\nShow me the most popular movies!"
+        android:textColor="@color/black_overlay"
+        android:background="@drawable/rounded_background_maincolor"
+        app:layout_constraintTop_toBottomOf="@+id/alertdialog_title_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/alertdialog_show_top_rated_button_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        android:text="Only the best!\n\nShow me the most top rated movies!"
+        android:textColor="@color/black_overlay"
+        android:textSize="10dp"
+        android:background="@drawable/rounded_background_maincolor"
+        app:layout_constraintTop_toBottomOf="@+id/alertdialog_show_popular_button_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
