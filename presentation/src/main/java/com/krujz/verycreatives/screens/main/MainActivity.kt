@@ -66,8 +66,9 @@ class MainActivity : BaseActivity(), MainContract.View , ISelectorOnButtonClick 
 
     private fun setUpSelectorImageButtonOnClickListener(){
         selector_imagebutton.setOnClickListener {
-            val dialog = AlertDialogFragment()
-            dialog.show(supportFragmentManager, "tag")
+            /*val dialog = AlertDialogFragment()
+            dialog.show(supportFragmentManager, "tag")*/
+            dialogNavigator.showNormalAlertDialog()
         }
     }
 

@@ -25,24 +25,24 @@ class HomeFragmentPresenter constructor(private val repository: IMovieRepository
     override suspend fun getTopRatedMovies(page: Int): Collection<MovieItemData>{
         val collection = loadAllTopRatedMovies(page)
         val mappedCollection = entityToDomainMapper.mapToCollectionDomain(collection)
-        return convertCollectionOfPopularMovies(mappedCollection)
+        return convertCollectionOfMovies(mappedCollection)
     }
 
     private suspend fun loadAllTopRatedMovies(page: Int) : Collection<MovieEntity> {
-        return repository.getCollectionOfPopularMovies(apiKey, page)
+        return repository.getCollectionOfTopRatedMovies(apiKey, page)
     }
 
     override suspend fun getPopularMovies(page: Int): Collection<MovieItemData>{
         val collection = loadAllPopularMovies(page)
         val mappedCollection = entityToDomainMapper.mapToCollectionDomain(collection)
-        return convertCollectionOfPopularMovies(mappedCollection)
+        return convertCollectionOfMovies(mappedCollection)
     }
 
     private suspend fun loadAllPopularMovies(page: Int): Collection<MovieEntity> {
         return repository.getCollectionOfPopularMovies(apiKey, page)
     }
 
-    private fun convertCollectionOfPopularMovies(mappedCollection: Collection<MovieModel>): Collection<MovieItemData> {
+    private fun convertCollectionOfMovies(mappedCollection: Collection<MovieModel>): Collection<MovieItemData> {
         return domainToMapperItem.mapToCollectionOfGridDataWrapper(mappedCollection)
     }
 
