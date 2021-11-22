@@ -1,21 +1,15 @@
 package com.krujz.verycreatives.screens.main
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
-import com.google.android.material.appbar.AppBarLayout
-import com.krujz.verycreatives.R
 import com.krujz.verycreatives.R.id
 import com.krujz.verycreatives.R.layout
 import com.krujz.verycreatives.screens.common.ISelectorOnButtonClick
 import com.krujz.verycreatives.screens.common.activity.BaseActivity
 import com.krujz.verycreatives.screens.common.contracts.MainContract
-import com.krujz.verycreatives.screens.common.dialogs.AlertDialogFragment
 import com.krujz.verycreatives.screens.common.dialogs.interfaces.IDialogNavigator
-import com.krujz.verycreatives.screens.main.fragments.home.HomeFragment
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainContract.View , ISelectorOnButtonClick {
@@ -66,8 +60,6 @@ class MainActivity : BaseActivity(), MainContract.View , ISelectorOnButtonClick 
 
     private fun setUpSelectorImageButtonOnClickListener(){
         selector_imagebutton.setOnClickListener {
-            /*val dialog = AlertDialogFragment()
-            dialog.show(supportFragmentManager, "tag")*/
             dialogNavigator.showNormalAlertDialog()
         }
     }
