@@ -28,4 +28,7 @@ class ImageLoader (private val activity: AppCompatActivity): IImageLoader {
     override fun loadImageDrawableIntoImageView(imageDrawable: Int, target: ImageView) {
         Glide.with(activity).load(imageDrawable).into(target)
     }
+
+
+    
 }
