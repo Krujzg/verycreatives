@@ -1,10 +1,11 @@
 package com.krujz.verycreatives.dependencyinjection.app
 
-import android.app.Application
 import com.krujz.application.MovieApi
 import com.krujz.verycreatives.BuildConfig
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,10 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 @Module
-class NetworkingAppModule(private val application: Application) {
-
-    @Provides
-    fun application() = application
+@InstallIn(SingletonComponent::class)
+class NetworkingAppModule{
 
     @Provides
     @AppScope

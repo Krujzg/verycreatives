@@ -13,20 +13,18 @@ import com.krujz.verycreatives.R
 import com.krujz.verycreatives.screens.common.contracts.FavoritesContract
 import com.krujz.verycreatives.screens.common.fragment.BaseFragment
 import com.krujz.verycreatives.screens.common.imageloader.IImageLoader
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoritesFragment: BaseFragment(), FavoritesContract.View {
 
     private var collectionOfMovies: ArrayList<MovieItemData> = arrayListOf()
 
-
-    @Inject
-    lateinit var presenter: FavoritesContract.Presenter
-    @Inject
-    lateinit var imageLoader: IImageLoader
-    @Inject
-    lateinit var mapper: IMovieDataModelMapper<MovieModel, MovieItemData>
+    @Inject lateinit var presenter: FavoritesContract.Presenter
+    @Inject lateinit var imageLoader: IImageLoader
+    @Inject lateinit var mapper: IMovieDataModelMapper<MovieModel, MovieItemData>
 
     private lateinit var recyclerAdapter : FavoritesFragmentRecyclerAdapter
 
@@ -42,7 +40,6 @@ class FavoritesFragment: BaseFragment(), FavoritesContract.View {
         addMoviesToTheRecyclerView()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
-        injector.inject(this)
         super.onCreate(savedInstanceState)
         getFavoriteMovies()
     }

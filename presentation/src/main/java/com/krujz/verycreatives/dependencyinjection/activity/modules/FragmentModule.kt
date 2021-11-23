@@ -19,8 +19,11 @@ import com.krujz.verycreatives.screens.main.fragments.home.HomeFragmentPresenter
 import com.krujz.verycreatives.screens.main.fragments.moviedetails.MovieDetailsPresenter
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 
 @Module
+@InstallIn(ActivityComponent::class)
 object FragmentModule {
 
     @Provides

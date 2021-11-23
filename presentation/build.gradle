@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id "kotlin-android-extensions"
+    id "dagger.hilt.android.plugin"
     //id "androidx.navigation.safeargs"
 }
 
@@ -55,7 +56,9 @@ android {
         jvmTarget = '11'
     }
 }
-
+kapt {
+    correctErrorTypes true
+}
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -99,8 +102,11 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // DI
-    api "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    //api "com.google.dagger:dagger:$dagger_version"
+    //kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    implementation "com.google.dagger:hilt-android:$dagger_version"
+    kapt "com.google.dagger:hilt-compiler:$dagger_version"
 
     implementation project(path: ':application')
     implementation project(path: ':infrastructure')

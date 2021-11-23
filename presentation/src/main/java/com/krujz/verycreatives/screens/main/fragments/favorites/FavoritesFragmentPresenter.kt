@@ -4,6 +4,7 @@ import com.krujz.application.services.IFavoriteMoviesService
 import com.krujz.domain.models.MovieModel
 import com.krujz.verycreatives.screens.common.contracts.FavoritesContract
 import com.krujz.verycreatives.screens.common.presenter.BasePresenter
+import dagger.hilt.android.AndroidEntryPoint
 
 class FavoritesFragmentPresenter constructor(private val service: IFavoriteMoviesService): BasePresenter(), FavoritesContract.Presenter {
 

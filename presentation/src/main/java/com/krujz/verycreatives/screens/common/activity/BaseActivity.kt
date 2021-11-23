@@ -9,23 +9,7 @@ import com.krujz.verycreatives.dependencyinjection.activity.modules.*
 
 open class BaseActivity : AppCompatActivity() {
 
-    private val appComponent get() = (application as BaseApplication).appComponent
-    private val presentationComponent by lazy { activityComponent.newPresentationComponent() }
     protected var doesBackToExitPressedTwice: Boolean = false
-
-    val activityComponent by lazy{
-        appComponent.newActivityComponentBuilder()
-            .activity(this)
-            .activityModule(ActivityModule)
-            .useCaseModule(UseCaseModule)
-            .repositoryModule(RepositoryModule)
-            .serviceModule(ServiceModule)
-            .mapperModule(MapperModule)
-            .fragmentModule(FragmentModule)
-            .build()
-    }
-
-    protected val injector get() = presentationComponent
 
     protected fun showMessageBox(text: String) { Toast.makeText(this, text, Toast.LENGTH_SHORT).show() }
 

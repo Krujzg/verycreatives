@@ -16,9 +16,11 @@ import com.krujz.verycreatives.screens.common.fragment.BaseFragment
 import com.krujz.verycreatives.screens.common.gridview.CustomGrid
 import com.krujz.verycreatives.screens.common.imageloader.IImageLoader
 import com.krujz.verycreatives.screens.main.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeFragment : BaseFragment(), HomeContract.View {
 
     var collectionOfMovies: ArrayList<MovieItemData> = arrayListOf()
@@ -35,7 +37,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        injector.inject(this)
         super.onCreate(savedInstanceState)
         val movieType = getMovieTypeFromBundle()
         if (movieType.isNotEmpty()){

@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.krujz.verycreatives.BuildConfig
 import com.krujz.verycreatives.screens.common.glide.GlideImageLoader
+import dagger.hilt.android.scopes.ActivityScoped
 
 class ImageLoader (private val activity: AppCompatActivity): IImageLoader {
 

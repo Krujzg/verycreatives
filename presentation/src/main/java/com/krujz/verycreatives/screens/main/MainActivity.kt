@@ -10,8 +10,10 @@ import com.krujz.verycreatives.screens.common.ISelectorOnButtonClick
 import com.krujz.verycreatives.screens.common.activity.BaseActivity
 import com.krujz.verycreatives.screens.common.contracts.MainContract
 import com.krujz.verycreatives.screens.common.dialogs.interfaces.IDialogNavigator
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity(), MainContract.View , ISelectorOnButtonClick {
 
     lateinit var navController: NavController
@@ -23,7 +25,6 @@ class MainActivity : BaseActivity(), MainContract.View , ISelectorOnButtonClick 
     lateinit var dialogNavigator: IDialogNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        injector.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(layout.main_activity)
 

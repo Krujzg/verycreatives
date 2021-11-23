@@ -15,10 +15,11 @@ import com.krujz.verycreatives.screens.common.fragment.BaseFragment
 import com.krujz.verycreatives.screens.common.imageloader.IImageLoader
 import com.krujz.verycreatives.screens.main.fragments.favorites.FavoritesFragment
 import com.krujz.verycreatives.screens.main.fragments.home.HomeFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class MovieDetailsFragment : BaseFragment(), MovieDetailsContract.View {
 
     var currentMovie: MovieModel? = null
@@ -59,7 +60,6 @@ class MovieDetailsFragment : BaseFragment(), MovieDetailsContract.View {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        injector.inject(this)
         super.onCreate(savedInstanceState)
         getSelectedMovie()
     }
