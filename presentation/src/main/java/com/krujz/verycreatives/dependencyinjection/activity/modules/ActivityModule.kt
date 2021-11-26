@@ -18,7 +18,6 @@ import dagger.hilt.android.scopes.ActivityScoped
 @InstallIn(ActivityComponent::class)
 object ActivityModule {
 
-
     @Provides
     fun appCompatActivity(activity: Activity) : AppCompatActivity = activity as AppCompatActivity
 
@@ -37,5 +36,4 @@ object ActivityModule {
     fun mainPresenter(): MainContract.Presenter{
         return MainPresenter()
     }
-
 }

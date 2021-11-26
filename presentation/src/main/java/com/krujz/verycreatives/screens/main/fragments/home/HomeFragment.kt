@@ -24,10 +24,9 @@ import javax.inject.Inject
 class HomeFragment : BaseFragment(), HomeContract.View {
 
     var collectionOfMovies: ArrayList<MovieItemData> = arrayListOf()
-    @Inject
-    lateinit var presenter : HomeContract.Presenter
-    @Inject
-    lateinit var imageLoader: IImageLoader
+    @Inject lateinit var presenter : HomeContract.Presenter
+    @Inject lateinit var imageLoader: IImageLoader
+    lateinit var movieType: String
 
     private fun getMovieTypeFromBundle(): String{
         return when(arguments != null){
@@ -38,11 +37,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val movieType = getMovieTypeFromBundle()
-        if (movieType.isNotEmpty()){
-            getMovies(movieType)
-        }
-
+        movieType = getMovieTypeFromBundle()
     }
 
     override fun onCreateView(
@@ -50,7 +45,13 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(R.layout.home_fragment, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (movieType.isNotEmpty()){
+            getMovies(movieType)
+        }
     }
 
     private fun getMovies(movieType: String){

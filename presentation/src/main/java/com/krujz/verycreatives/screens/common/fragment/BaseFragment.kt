@@ -9,5 +9,4 @@ import kotlinx.coroutines.SupervisorJob
 open class BaseFragment : Fragment() {
     protected val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     protected val coroutineScopeIO = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-
 }
